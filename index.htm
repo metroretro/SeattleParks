@@ -1,0 +1,121 @@
+<html>
+<!--
+ /**
+ * index.htm is a demo file to  work with a sample API file to be called via AJAX to 
+ * deliver the contents of 2 JSON files, one of which orders the 
+ * Seattle parks data by name, the other by park acreage.
+ *
+ * The api page can be called via AJAX either via GET or POST, using a variable 
+ * named "order":
+ *
+ * <code>
+ * api.php?order=name
+ * </code>
+ *
+ * In the example above, the parameter order is loaded with the string "name" 
+ * which will indicate to the API to load the JSON file containing 
+ * the parks data ordered by park name.
+ *
+ * @package parks-in-seattle-web-service
+ * @author Emily Ruf
+ * @version 1.00 2015/02/21
+ * @link https://github.com/newmanix/bond-web-service 
+ * @license http://www.apache.org/licenses/LICENSE-2.0
+ * @see index.htm
+ * @todo none
+ */
+-->
+<head>
+<title>Bond Web Service Demo</title>
+<style>
+body {font-family:georgia;}
+#films {
+	max-width:600px;
+	margin:5px;
+	padding:2px;
+}
+#films > div {
+	padding:5px;
+	min-height:40px;
+	margin-bottom:5px;
+	border:1px solid #E77D2C;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	position:relative; /* required to place #pic to right */
+}
+
+#films h3 {
+	font-family:georgia;
+	padding:5px;
+	color:#fff;
+	background:#E77D2C;
+	margin:0;
+}
+
+#pic{
+	position:absolute;
+	right:10px;
+	top:10px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {  
+
+	$('.category').click(function(e){
+        e.preventDefault(); //stop default action of the link
+		cat = $(this).attr("href");  //get category from URL
+		loadAJAX(cat);  //load AJAX and parse JSON file
+	});
+});	
+
+
+function loadAJAX(cat)
+{
+	$.ajax({  
+		type: "GET",
+		dataType: "json",  
+		url: "api.php?cat=" + cat,
+		success: bondJSON,
+	});
+
+	$('#films').html('');//clear data
+}
+
+function toConsole(data)
+{//return data to console for JSON examination
+	console.log(data); //to view,use Chrome console, ctrl + shift + j
+}
+
+function bondJSON(data){
+	//$('#output').text(JSON.stringify(data));  //uncomment to view raw output
+	var header = data.title;
+	$('#filmtitle').html(header);
+	$.each(data.films, function(i,item){
+	
+		var text = '<b>Title</b>: ' + item.Title + '<br />';
+		text += '<b>Film #</b>: ' + item.Film + '<br />';
+		text += '<b>Year</b>: ' + item.Year + '<br />';
+		text += '<b>Bond</b>: ' + item.Bond + '<br />';
+		text += '<b>Box Office</b>: ' + item.BoxOffice + '<br />';
+		text += '<b>Writers</b>: ' + item.Writers + '<br />';
+		text += '<div id="pic"><img src="thumbnails/' + item.Image + '" /></div>';
+		$('<div></div>').html(text).appendTo('#films');  
+	});
+}
+
+</script>
+</head>
+	<body>
+	<h1>Bond Web Service Demo</h1>
+		<a href="year" class="category">Bond Films By Year</a><br />
+		<a href="box" class="category">Bond Films By International Box Office Totals</a>
+		<h3 id="filmtitle">Title Will Go Here</h3>
+		<div id="films">
+			<p>Films will go here</p>
+		</div>
+		<div id="output">Results of JSON.stringify go here</div>
+	</body>
+</html>
