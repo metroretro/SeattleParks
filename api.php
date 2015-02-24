@@ -8,31 +8,31 @@
  * named "order":
  *
  * <code>
- * api.php?order=name
+ * api.php?order=size
  * </code>
  *
- * In the example above, the parameter order is loaded with the string "name" 
+ * In the example above, the parameter order is loaded with the string "size" 
  * which will indicate to the API to load the JSON file containing 
- * the parks data ordered by park name.
+ * the parks data ordered by park size.
  *
  * @package parks-in-seattle-web-service
  * @author Emily Ruf
  * @version 1.00 2015/02/21
- * @link https://github.com/newmanix/bond-web-service 
+ * @link https://github.com/metroretro/SeattleParks
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @see index.htm
  * @todo none
  */
 
-if(isset($_REQUEST['cat']))
+if(isset($_REQUEST['order']))
 {//check to be sure data has been transmitted via GET or POST
-	switch($_REQUEST['cat'])
-	{//determine contents of 'cat'
-		case "box":
-			include('data/bond-box-office.js'); //"box" orders by box office results
+	switch($_REQUEST['order'])
+	{//determine contents of 'order'
+		case "year":
+			include('data/historic-parks-by-year.js'); //"year" orders by year park was established
 			break;
 		default:
-			include('data/bond-year.js'); //default orders by year
+			include('data/historic-parks-by-name.js'); //default orders by name
 	}
 }else{//if not data sent, inform calling application
 	echo "Incorrect parameter sent";

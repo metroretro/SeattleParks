@@ -1,0 +1,144 @@
+body {
+	font-family: arial;
+	font-size: 1.3em;
+	margin:0px;
+	padding: 0px;
+}
+	
+#wrapper {
+	background-color: #424E4F;
+	padding: 45px;
+	margin: 0px;
+}
+	
+
+#demo-header {
+	background-color: #424E4F;
+	color: #fff;
+	text-shadow: 1px 1px #000;
+}
+
+#demo-masthead {
+	background-color: #424E4F;
+	color: #eee;
+	max-width: 960px;
+}
+	
+#seattleParks { /*container for results*/
+	width:90%;
+	margin:30px auto;
+	overflow: hidden;
+	/*background-color: #5E6D70;*/
+}
+
+#seattleParks > div {
+	/*padding: 10px;
+	min-height:100px;
+	/*min-width: 400px;
+	margin: 10px;
+	/*border:1px solid #C13B00;*/
+	/*-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	display: inline-block; */
+	/*background-color: #424E4F;*/
+	/*position:relative; /* required to place #pic to right */
+}
+
+/*#pic{
+	/*position:absolute; 
+	right:10px;
+	top:10px; 
+	max-width: 400px;
+}
+*/
+
+.demo-nav {
+	display: inline-block;
+	padding: 15px;
+	margin: 0px 20px 0px 0px;
+	/*border: 1px solid #1B1D1E; */
+	border-radius: 5px;
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+
+	background-color: #FF6600;
+	
+}
+
+.demo-nav {
+	margin: 30px 20px 20px 0px;
+}
+
+.demo-nav:hover {
+	background-color: C13B00;
+	color: #1B1D1E;
+}
+
+.demo-nav > a  {
+	color: #000;
+	text-decoration: none;
+	text-shadow: 1px 0px #000;
+}
+
+.demo-results {
+	background-color: #7E8A8D/*#5E6D70*/;
+	margin: 0px;
+	padding: 15px 10px;
+	overflow: hidden;
+	/*min-height: 350px;*/
+
+}
+
+.parkItem {
+	color: #1B1D1E;
+	font: 12px/1.5 Verdana, Helveticaa, sans-serif;
+	line-height: 90%;
+	float: left;
+	width: 29%;
+	max-width: 400px;
+	margin: 2% 2% 50px 2%;
+}
+
+@media only screen and (max-width : 940px),
+only screen and (max-device-width : 940px) {
+	.parkItem { width: 44%; }
+}
+
+.parkItem  h3 {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	margin-top: 20px;
+	line-height: normal;
+}
+
+.picWrap  img {
+	max-width: 100%;
+}
+
+.picItem {
+
+}
+
+.parkDesc {
+
+}
+
+.parkDesc > p {
+	line-height: normal;
+	margin-top: -0.5em;
+}
+
+.parkDesc > p > a {
+	 color: #C13B00;
+}
+
+.imgCredit {
+	font-size: 80%;
+	font-style: italic;
+}
+
+
+
+
